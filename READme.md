@@ -30,6 +30,47 @@ This document outlines the typical lifecycle of a Node.js application, from deve
 Following this lifecycle ensures a structured approach to developing, deploying, and maintaining a Node.js application.
 ## Diagram
 
+Below is a visual representation of the Node.js application lifecycle:
+
+```mermaid
+graph TD;
+    A[Development] --> B[Build];
+    B --> C[Deployment];
+    C --> D[Maintenance];
+
+    subgraph Development
+        A1[Setup Environment]
+        A2[Initialize Project]
+        A3[Install Dependencies]
+        A4[Write Code]
+        A5[Testing]
+    end
+
+    subgraph Build
+        B1[Transpile Code]
+        B2[Bundle Assets]
+    end
+
+    subgraph Deployment
+        C1[Choose Hosting]
+        C2[Environment Variables]
+        C3[Deploy Application]
+        C4[Start Server]
+    end
+
+    subgraph Maintenance
+        D1[Monitoring]
+        D2[Logging]
+        D3[Updates]
+        D4[Bug Fixes]
+    end
+
+    A --> A1 --> A2 --> A3 --> A4 --> A5
+    B --> B1 --> B2
+    C --> C1 --> C2 --> C3 --> C4
+    D --> D1 --> D2 --> D3 --> D4
+```
+
 ```mermaid
 graph TD;
     A[Development] --> B[Build];
