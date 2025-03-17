@@ -109,3 +109,50 @@ graph TD;
     C --> C1 --> C2 --> C3 --> C4
     D --> D1 --> D2 --> D3 --> D4
 ```
+
+
+## Streams and Buffer
+
+### Streams
+Streams are a powerful way to handle reading/writing files, network communications, or any kind of end-to-end information exchange in Node.js. They are instances of EventEmitter and can be readable, writable, or both.
+
+#### Types of Streams
+1. **Readable**: Stream from which data can be read (e.g., `fs.createReadStream`).
+2. **Writable**: Stream to which data can be written (e.g., `fs.createWriteStream`).
+3. **Duplex**: Stream that is both readable and writable (e.g., network sockets).
+4. **Transform**: Duplex stream where the output is computed based on input (e.g., zlib streams for compression).
+
+#### Example
+```javascript
+const fs = require('fs');
+const readableStream = fs.createReadStream('file.txt');
+const writableStream = fs.createWriteStream('fileCopy.txt');
+
+readableStream.pipe(writableStream);
+```
+
+### Buffer
+Buffers are used to handle binary data in Node.js. They are instances of the `Buffer` class and are used to store raw data similar to an array of integers but correspond to a raw memory allocation outside the V8 heap.
+
+#### Creating Buffers
+1. **Allocating a Buffer**:
+    ```javascript
+    const buffer = Buffer.alloc(10); // Creates a buffer of 10 bytes
+    ```
+2. **From an Array**:
+    ```javascript
+    const buffer = Buffer.from([1, 2, 3]);
+    ```
+3. **From a String**:
+    ```javascript
+    const buffer = Buffer.from('Hello');
+    ```
+
+#### Example
+```javascript
+const buffer = Buffer.from('Hello, World!');
+console.log(buffer.toString()); // Outputs: Hello, World!
+```
+
+Understanding streams and buffers is crucial for efficient data handling in Node.js applications.
+
